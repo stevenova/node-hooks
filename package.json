@@ -1,0 +1,26 @@
+{
+  "name": "node-hooks",
+  "version": "1.0.0",
+  "description": "Simple Hooks implementation for NodeJS using EventEmitter",
+  "main": "hooks.js",
+  "scripts": {
+    "test": "mocha tests/**/*.js --exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stevenova/node-hooks.git"
+  },
+  "keywords": [
+    "node",
+    "hooks"
+  ],
+  "author": "Steven Lum Yuen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stevenova/node-hooks/issues"
+  },
+  "homepage": "https://github.com/stevenova/node-hooks#readme",
+  "devDependencies": {
+    "mocha": "^9.1.2"
+  }
+}
