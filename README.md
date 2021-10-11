@@ -11,10 +11,11 @@ Your listener function will always be wrapped with a try/catch internally, so th
 
 **Example**
 
-```
+```javascript
 const name = 'TestHookName'
 // Creating the hook for the given events, remember that 'error' event is always added
 createHook(name, ['event1', 'event2'])
+
 // Create the listener functions
 const handler1 = function() {
   console.log('from event1')
@@ -22,16 +23,20 @@ const handler1 = function() {
 const handler2 = function() {
   console.log('from event2')
 }
+
 // Listen to the hook events
 listenHook(name, 'event1', handler1)
 listenHook(name, 'event2', handler2)
+
 // Listen to possible error events from the same hook
 listenHook(name, 'error', function(error) {
   console.log(error)
 })
+
 // Call the hook to send/notify listeners
 callHook(name, 'event1', 'test event1')
 callHook(name, 'event2', 'test event2')
+
 // Remove the listeners if no longer want to listen for events
 removeFromHook(name, 'event1', handler1)
 removeFromHook(name, 'event2', handler2)
