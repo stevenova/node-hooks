@@ -126,4 +126,11 @@ describe('Hooks', function() {
         done();
     });
 
+    it('should throw exception if hook with given name does not exist', function() {
+        const hookName = new Date().toISOString();
+        assert.throws(() => {
+            callHook(hookName, 'eventName', 'toasty!')
+        });
+    });
+
 });

@@ -78,8 +78,8 @@ const createHook = (hookName, events) => {
  * @param {function} func 
  */
 const listenHook = (hookName, eventName, func) => {
-    if (eventEmitters[hookName]) {
-        const ee = eventEmitters[hookName];
+    const ee = getHook(hookName);
+    if (ee) {
         if (ee.allowedEventNames.includes(eventName)) {
             let wrappedFunction = null;
             // If it is async, wrap around, so an error can be emitted if it has an exception
@@ -108,8 +108,6 @@ const listenHook = (hookName, eventName, func) => {
         } else {
             throw Error(`Event name ${eventName} not part of allowed event names on hook: ${hookName}`);
         }
-    } else {
-        throw Error(`Hook with name ${hookName} does not exist`);
     }
 }
 
@@ -139,7 +137,9 @@ const getHook = (hookName) => {
  */
 const callHook = (hookName, eventName, ...args) => {
     const hook = getHook(hookName);
-    hook.emit(eventName, ...args);
+    if (hook) {
+        hook.emit(eventName, ...args);
+    }
 }
 
 module.exports = {
